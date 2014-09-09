@@ -1,0 +1,11 @@
+### How to convert .mov file to .avi file?
+	$ ffmpeg -i file-name.mov -g 60 -vcodec msmpeg4v2 -acodec pcm_u8 -f avi file-name.avi
+
+### How to split ape+cue or flac+cue pair into separate mp3 tracks with the highest quality?
+At first of all we have to install mac, flac, wavpack, vorbis-tools, shntool, cuetools and mp3info.
+Than just run something like:
+	$ shnsplit -f file.cue \
+	  -o "cust ext=mp3 lame --quiet --alt-preset insane - %f" \
+	  file.ape
+NOTES: "insane" prest for lame means 320 kbit/s of constant bitrate. See the link below for more
+information: http://goo.gl/pwxNLf .
